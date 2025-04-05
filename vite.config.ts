@@ -9,7 +9,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 export default defineConfig(async () => ({
-  base: './', // ✅ Ensures all built asset paths are relative (fixes blank screen)
+  base: './', // ✅ Makes all asset paths relative (important for Vercel)
   plugins: [
     react(),
     runtimeErrorOverlay(),
@@ -32,7 +32,7 @@ export default defineConfig(async () => ({
   },
   root: path.resolve(__dirname, "client"),
   build: {
-    outDir: path.resolve(__dirname, "dist/public"), // ✅ Will output final build here
+    outDir: "dist", // ✅ Output inside client/, which Vercel will use
     emptyOutDir: true,
   },
 }));
